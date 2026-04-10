@@ -1,2 +1,203 @@
 # Cyberbot
 Cyberbot
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberBot - Reparación y Tecnología</title>
+    <!-- Fuentes cyberpunk -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #c0fefe;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1f1f1f, #0a0a0a);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 2px solid #0ff;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #8ff;
+            margin-top: 0.5rem;
+        }
+
+        nav {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #0ff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #f0f;
+            text-shadow: 0 0 5px #f0f, 0 0 10px #f0f;
+        }
+
+        section {
+            padding: 3rem 2rem;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #0ff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 5px #0ff;
+        }
+
+        section p {
+            color: #c0fefe;
+            margin-bottom: 1rem;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #0ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            width: 250px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: #f0f;
+            box-shadow: 0 0 15px #f0f, 0 0 30px #f0f inset;
+        }
+
+        .card h3 {
+            color: #0ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid #0ff;
+            margin-top: 3rem;
+            color: #6ff;
+        }
+
+        /* Animación cyberpunk tenue */
+        .glow {
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #0ff; }
+            50% { text-shadow: 0 0 20px #0ff; }
+            100% { text-shadow: 0 0 5px #0ff; }
+        }
+
+        /* Botón interactivo */
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            margin-top: 1rem;
+            border: 1px solid #0ff;
+            border-radius: 5px;
+            color: #0ff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 15px #0ff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="glow">CyberBot</h1>
+        <p>Soluciones de computación, software y robótica con estilo académico cyberpunk.</p>
+        <nav>
+            <a href="#services">Servicios</a>
+            <a href="#about">Acerca de</a>
+            <a href="#prototype">Prototipo</a>
+        </nav>
+    </header>
+
+    <section id="services">
+        <h2>Servicios</h2>
+        <div class="services">
+            <div class="card">
+                <h3>Reparación de Computadoras</h3>
+                <p>Diagnóstico y arreglo de hardware para laptops y desktops con precisión robótica.</p>
+            </div>
+            <div class="card">
+                <h3>Software y Malware</h3>
+                <p>Instalación, optimización y eliminación de software malicioso, protegiendo tu sistema.</p>
+            </div>
+            <div class="card">
+                <h3>Ingeniería Básica</h3>
+                <p>Proyectos académicos de robótica y electrónica aplicada a la informática.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>Acerca de CyberBot</h2>
+        <p>CyberBot es un laboratorio académico de tecnología, donde combinamos ingeniería básica, robótica y software para ofrecer soluciones innovadoras a problemas cotidianos de computación.</p>
+        <p>Nuestro enfoque es educativo y práctico, ideal para estudiantes, prototipos y entusiastas de la tecnología cyberpunk.</p>
+    </section>
+
+    <section id="prototype">
+        <h2>Prototipo Interactivo</h2>
+        <p>Simula una reparación de sistema básico:</p>
+        <button class="btn" onclick="runSimulation()">Ejecutar Diagnóstico</button>
+        <p id="simulationOutput" style="margin-top:1rem; color:#8ff;"></p>
+    </section>
+
+    <footer>
+        &copy; 2026 CyberBot. Laboratorio académico de tecnología y robótica.
+    </footer>
+
+    <script>
+        function runSimulation() {
+            const output = document.getElementById('simulationOutput');
+            output.textContent = "Iniciando diagnóstico... ✔️\nAnalizando sistema... 🔄\nMalware detectado y eliminado ✅\nReparación completada.";
+        }
+    </script>
+</body>
+</html>
