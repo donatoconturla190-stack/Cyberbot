@@ -1,201 +1,386 @@
-<!DOCTYPE html>
+              <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberBot - Reparación y Tecnología</title>
-    <!-- Fuentes cyberpunk -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Orbitron', sans-serif;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vortexion Labs</title>
 
-        body {
-            background: #0a0a0a;
-            color: #c0fefe;
-            line-height: 1.6;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        header {
-            background: linear-gradient(90deg, #1f1f1f, #0a0a0a);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 2px solid #0ff;
-        }
+<style>
+:root{
+  --bg:#0A0A0F;
+  --blue:#2F6BFF;
+  --violet:#8A5CFF;
+  --text:#E6EDF7;
+  --muted:rgba(230,237,247,0.7);
+}
 
-        header h1 {
-            font-size: 3rem;
-            color: #0ff;
-            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-        }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-        header p {
-            font-size: 1.2rem;
-            color: #8ff;
-            margin-top: 0.5rem;
-        }
+body{
+  font-family:Inter, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-        nav {
-            margin: 1rem 0;
-            text-align: center;
-        }
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 10%;
+  background:rgba(10,10,15,0.6);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+}
 
-        nav a {
-            color: #0ff;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+nav span{
+  font-family:"Space Grotesk";
+  font-weight:700;
+  letter-spacing:1px;
+}
 
-        nav a:hover {
-            color: #f0f;
-            text-shadow: 0 0 5px #f0f, 0 0 10px #f0f;
-        }
+nav a{
+  color:var(--muted);
+  margin-left:20px;
+  text-decoration:none;
+  font-size:0.9rem;
+}
 
-        section {
-            padding: 3rem 2rem;
-            max-width: 1000px;
-            margin: auto;
-        }
+nav a:hover{color:var(--text);}
 
-        section h2 {
-            font-size: 2rem;
-            color: #0ff;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 5px #0ff;
-        }
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  padding:0 10%;
+}
 
-        section p {
-            color: #c0fefe;
-            margin-bottom: 1rem;
-        }
+.hero::before{
+  content:"";
+  position:absolute;
+  width:200%;
+  height:200%;
+  background:
+    radial-gradient(circle at 25% 30%, rgba(47,107,255,0.25), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(138,92,255,0.25), transparent 40%);
+  animation:move 12s ease-in-out infinite alternate;
+}
 
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
+@keyframes move{
+  from{transform:translate(-5%,-5%)}
+  to{transform:translate(5%,5%)}
+}
 
-        .card {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid #0ff;
-            border-radius: 10px;
-            padding: 1.5rem;
-            width: 250px;
-            text-align: center;
-            transition: 0.3s;
-        }
+.hero h1{
+  font-family:"Space Grotesk";
+  font-size:3.2rem;
+  z-index:2;
+  line-height:1.2;
+}
 
-        .card:hover {
-            border-color: #f0f;
-            box-shadow: 0 0 15px #f0f, 0 0 30px #f0f inset;
-        }
+.hero p{
+  margin-top:20px;
+  max-width:700px;
+  color:var(--muted);
+  z-index:2;
+  font-size:1.1rem;
+}
 
-        .card h3 {
-            color: #0ff;
-            margin-bottom: 0.5rem;
-        }
+.cta{
+  margin-top:30px;
+  display:flex;
+  gap:15px;
+  z-index:2;
+}
 
-        .card p {
-            font-size: 0.95rem;
-        }
+.btn{
+  padding:12px 22px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.04);
+  color:var(--text);
+  cursor:pointer;
+  transition:0.3s;
+  font-weight:500;
+}
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 2px solid #0ff;
-            margin-top: 3rem;
-            color: #6ff;
-        }
+.btn.primary{
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  border:none;
+}
 
-        /* Animación cyberpunk tenue */
-        .glow {
-            animation: glow 1.5s infinite alternate;
-        }
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(47,107,255,0.2);
+}
 
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px #0ff; }
-            50% { text-shadow: 0 0 20px #0ff; }
-            100% { text-shadow: 0 0 5px #0ff; }
-        }
+/* SECTIONS */
+section{
+  padding:100px 10%;
+}
 
-        /* Botón interactivo */
-        .btn {
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
-            margin-top: 1rem;
-            border: 1px solid #0ff;
-            border-radius: 5px;
-            color: #0ff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+h2{
+  font-family:"Space Grotesk";
+  font-size:2rem;
+  margin-bottom:40px;
+}
 
-        .btn:hover {
-            background: #0ff;
-            color: #000;
-            box-shadow: 0 0 15px #0ff;
-        }
-    </style>
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:22px;
+  border-radius:14px;
+  transition:0.3s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:var(--violet);
+  box-shadow:0 15px 40px rgba(138,92,255,0.15);
+}
+
+.card h3{
+  margin-bottom:10px;
+  font-size:1.1rem;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:0.9rem;
+  line-height:1.4;
+}
+
+/* LAB */
+.lab{
+  background:linear-gradient(135deg, rgba(47,107,255,0.08), rgba(138,92,255,0.08));
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+/* PRODUCTS */
+.product{
+  padding:20px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.03);
+  transition:0.3s;
+}
+
+.product:hover{
+  transform:scale(1.03);
+  border-color:var(--blue);
+}
+
+/* PRICING */
+.pricing{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.price{
+  padding:25px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.03);
+  transition:0.3s;
+}
+
+.price:hover{
+  transform:translateY(-5px);
+  border-color:var(--blue);
+  box-shadow:0 15px 30px rgba(47,107,255,0.15);
+}
+
+.price h3{
+  margin-bottom:10px;
+}
+
+.price span{
+  color:var(--muted);
+  font-size:0.9rem;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:50px;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <h1 class="glow">CyberBot</h1>
-        <p>Soluciones de computación, software y robótica con estilo académico cyberpunk.</p>
-        <nav>
-            <a href="#services">Servicios</a>
-            <a href="#about">Acerca de</a>
-            <a href="#prototype">Prototipo</a>
-        </nav>
-    </header>
 
-    <section id="services">
-        <h2>Servicios</h2>
-        <div class="services">
-            <div class="card">
-                <h3>Reparación de Computadoras</h3>
-                <p>Diagnóstico y arreglo de hardware para laptops y desktops con precisión robótica.</p>
-            </div>
-            <div class="card">
-                <h3>Software y Malware</h3>
-                <p>Instalación, optimización y eliminación de software malicioso, protegiendo tu sistema.</p>
-            </div>
-            <div class="card">
-                <h3>Ingeniería Básica</h3>
-                <p>Proyectos académicos de robótica y electrónica aplicada a la informática.</p>
-            </div>
-        </div>
-    </section>
+<nav>
+  <span>VORTEXION LABS</span>
+  <div>
+    <a href="#servicios">Servicios</a>
+    <a href="#laboratorio">Laboratorio</a>
+    <a href="#productos">Productos</a>
+    <a href="#academia">Academia</a>
+    <a href="#precios">Planes</a>
+  </div>
+</nav>
 
-    <section id="about">
-        <h2>Acerca de CyberBot</h2>
-        <p>CyberBot es un laboratorio académico de tecnología, donde combinamos ingeniería básica, robótica y software para ofrecer soluciones innovadoras a problemas cotidianos de computación.</p>
-        <p>Nuestro enfoque es educativo y práctico, ideal para estudiantes, prototipos y entusiastas de la tecnología cyberpunk.</p>
-    </section>
+<!-- HERO -->
+<div class="hero">
+  <h1>Ingeniería de la próxima capa de la realidad</h1>
+  <p>
+    Vortexion Labs es una empresa tecnológica especializada en fabricación digital, ingeniería de sistemas,
+    ciberseguridad y educación avanzada en tecnologías emergentes.
+  </p>
 
-    <section id="prototype">
-        <h2>Prototipo Interactivo</h2>
-        <p>Simula una reparación de sistema básico:</p>
-        <button class="btn" onclick="runSimulation()">Ejecutar Diagnóstico</button>
-        <p id="simulationOutput" style="margin-top:1rem; color:#8ff;"></p>
-    </section>
+  <div class="cta">
+    <div class="btn primary">Explorar ecosistema</div>
+    <div class="btn">Ver infraestructura</div>
+  </div>
+</div>
 
-    <footer>
-        &copy; 2026 CyberBot. Laboratorio académico de tecnología y robótica.
-    </footer>
+<!-- SERVICIOS -->
+<section id="servicios">
+  <h2>Ecosistema tecnológico</h2>
+  <div class="grid">
 
-    <script>
-        function runSimulation() {
-            const output = document.getElementById('simulationOutput');
-            output.textContent = "Iniciando diagnóstico... ✔️\nAnalizando sistema... 🔄\nMalware detectado y eliminado ✅\nReparación completada.";
-        }
-    </script>
+    <div class="card">
+      <h3>Fabricación 3D avanzada</h3>
+      <p>Diseño y producción de componentes físicos mediante manufactura aditiva de precisión industrial.</p>
+    </div>
+
+    <div class="card">
+      <h3>Ingeniería de hardware</h3>
+      <p>Desarrollo de sistemas electrónicos, prototipos y arquitectura de dispositivos inteligentes.</p>
+    </div>
+
+    <div class="card">
+      <h3>Ciberseguridad</h3>
+      <p>Análisis de vulnerabilidades, protección de sistemas y respuesta avanzada ante amenazas digitales.</p>
+    </div>
+
+    <div class="card">
+      <h3>Laboratorio técnico</h3>
+      <p>Diagnóstico, reparación y optimización de sistemas informáticos y hardware profesional.</p>
+    </div>
+
+    <div class="card">
+      <h3>Academia tecnológica</h3>
+      <p>Programas de formación en ingeniería, software, impresión 3D y sistemas computacionales.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- LAB -->
+<section id="laboratorio" class="lab">
+  <h2>Infraestructura de laboratorio</h2>
+  <p style="color:var(--muted);max-width:750px;line-height:1.6">
+    Un entorno de ingeniería avanzada donde convergen robótica, fabricación digital,
+    sistemas inteligentes y herramientas de análisis de alto rendimiento.
+    Diseñado para investigación, desarrollo y producción tecnológica.
+  </p>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+  <h2>Desarrollos y productos</h2>
+  <div class="grid">
+
+    <div class="product">
+      <h3>Neural Core X1</h3>
+      <p style="color:var(--muted)">Módulo experimental de arquitectura avanzada.</p>
+    </div>
+
+    <div class="product">
+      <h3>Industrial Print Module</h3>
+      <p style="color:var(--muted)">Sistema de fabricación de alta precisión.</p>
+    </div>
+
+    <div class="product">
+      <h3>Cyber Frame Kit</h3>
+      <p style="color:var(--muted)">Estructura modular para prototipos electrónicos.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACADEMIA -->
+<section id="academia">
+  <h2>Academia Vortexion</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h3>Técnico en reparación de PC</h3>
+      <p>Formación práctica en diagnóstico, reparación y optimización de hardware.</p>
+    </div>
+
+    <div class="card">
+      <h3>Ciberseguridad inicial</h3>
+      <p>Fundamentos de seguridad informática y defensa de sistemas digitales.</p>
+    </div>
+
+    <div class="card">
+      <h3>Modelado e impresión 3D</h3>
+      <p>Diseño, prototipado y producción mediante tecnologías de manufactura aditiva.</p>
+    </div>
+
+    <div class="card">
+      <h3>Ingeniería de sistemas</h3>
+      <p>Arquitectura de software, hardware y sistemas integrados complejos.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <h2>Planes de servicio</h2>
+  <div class="pricing">
+
+    <div class="price">
+      <h3>Starter</h3>
+      <span>Acceso básico a herramientas y formación.</span>
+    </div>
+
+    <div class="price">
+      <h3>Pro</h3>
+      <span>Acceso completo a sistemas y soporte técnico.</span>
+    </div>
+
+    <div class="price">
+      <h3>Industrial</h3>
+      <span>Soluciones para empresas y producción avanzada.</span>
+    </div>
+
+    <div class="price">
+      <h3>Enterprise</h3>
+      <span>Infraestructura personalizada a nivel corporativo.</span>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  Vortexion Labs © 2026 — Ingeniería de sistemas tecnológicos globales
+</footer>
+
 </body>
 </html>
